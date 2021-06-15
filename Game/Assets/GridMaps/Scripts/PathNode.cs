@@ -12,16 +12,23 @@ public class PathNode {
     public int hCost; // heuristic cost, direct path
     public int fCost; // h + g
 
+    public bool isWalkable;
     public PathNode parentNode;
 
     public PathNode(Grid<PathNode> grid, int x, int y) {
         this.grid = grid;
         this.x = x;
         this.y = y;
+        isWalkable = true;
     }
 
     public void CalculateFCost() {
         fCost = gCost + hCost;
+    }
+
+    public void SetIsWalkable(bool isWalkable) {
+        this.isWalkable = isWalkable;
+        grid.TriggerGridObjectChanged(x, y);
     }
 
     public override string ToString() {

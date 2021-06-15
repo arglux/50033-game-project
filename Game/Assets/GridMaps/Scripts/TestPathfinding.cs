@@ -22,12 +22,15 @@ public class TestPathfinding : MonoBehaviour {
             List<PathNode> path = pathfinding.FindPath(0, 0, x, y);
             if (path != null) {
                 for (int i=0; i < path.Count - 1; i++) {
-                    Debug.DrawLine(new Vector3(path[i].x, path[i].y) * 32f + offset, new Vector3(path[i+1].x, path[i+1].y) * 32f + offset, Color.green, 2);
+                    Debug.DrawLine(new Vector3(path[i].x, path[i].y) * 32f + offset, new Vector3(path[i+1].x, path[i+1].y) * 32f + offset, Color.green, 1);
                     Debug.Log(path[i].x + "," + path[i].y);
-                }
-                
+                }   
             }
-            
+        }
+        if (Input.GetMouseButtonDown(1)) {
+            position = GetMouseWorldPositionWithZ(Input.mousePosition, mainCamera);
+            pathfinding.GetGrid().GetPosition(position, out int x, out int y);
+            pathfinding.GetNode(x, y).SetIsWalkable(!pathfinding.GetNode(x, y).isWalkable);
         }
     }
 
