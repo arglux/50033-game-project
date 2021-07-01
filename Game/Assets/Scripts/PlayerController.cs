@@ -20,15 +20,14 @@ public class PlayerController : MonoBehaviour {
     private BoxCollider2D bcollider;
     private Animator animator;
 
-    void Awake()
-    {
+    void Awake() {
         Application.targetFrameRate = 60;
         body=GetComponent<Rigidbody2D>();
         bcollider=GetComponent<BoxCollider2D>();
         animator=GetComponent<Animator>();
         Respawn();
     }
-
+ 
     #region Main
     void Update()
     {
@@ -162,8 +161,6 @@ public class PlayerController : MonoBehaviour {
         Heal( FlooredHealthToRegen );
      }
     #endregion
-
-
 
     #region Respawn System
     void Die() {

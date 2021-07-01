@@ -4,14 +4,53 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-
-    public GameObject hitEffect;
-
+    public float despawnTime = 3.0f;
     
-    void OnCollisionEnter2D(Collision2D other) {
-        // create hit effect
-        Debug.Log(other);
-        Destroy(gameObject);
+    public Vector3 position;
+    public Vector3 direction;
+
+    public float moveSpeed;
+    public float baseDamage;
+    public int pierceCount;
+
+    public float healthMultiplier = 1.0f;
+    public float shieldMultiplier = 1.0f;
+    public float armourMultiplier = 1.0f;
+    
+    void OnEnable()
+    {
+        this.gameObject.transform.position = this.position;
+        this.gameObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, this.direction);
+        StartCoroutine(DespawnRoutine());
     }
 
+    void Update()
+    {
+
+        this.gameObject.transform.Translate(Vector3.up * this.moveSpeed * Time.deltaTime);
+    }
+
+    void Despawn()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    IEnumerator DespawnRoutine()
+    {
+        yield return new WaitForSeconds(this.despawnTime);
+        this.Despawn();
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        GameObject target = col.gameObject;
+        if (target.CompareTag("Enemy"))
+        {
+            // target.GetComponent<EnemyController>().Impact(this);
+            this.pierceCount--;
+            if (this.pierceCount <= 0) this.Despawn();
+        } else {
+            this.Despawn();
+        }
+    }
 }
