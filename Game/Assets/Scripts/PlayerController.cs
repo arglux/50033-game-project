@@ -5,29 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
-    // Run Speed & Acceleration
-    [Header ("Movement Params")]
-	public float RunSpeed = 5f; // Maximum Horizontal Run Speeds
-    private Vector2 movementInput;
-
-    [Header ("Dodge System")]
-    public BarSlider staminaBar;
-    public int MaxStamina = 100;
-    public float StaminaRegenRate = 25;
-    public int DodgeStaminaCost = 50;
-    private float LastDodgeTime = 0;
-    public int CurrentStamina;
-    private float StaminaToRegen;
-
-    [Header ("Health System")]
-    public BarSlider healthBar;
-    public int MaxHealth = 100;
-    public float HealthRegenRate = 10;
-    public float HealthRegenDelay = 5;
-    private float LastDamagedTime = -1;
-    private int CurrentHealth;
-    private float HealthToRegen;
-
     [Header ("State Trackers")]
     public bool isDead = false;
     public bool isDodging = false;
@@ -36,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public Camera playerCam;
     public GameObject deathPanel;
     public Text respawnText;
+    public SkillController skillOne;
 
     [Header ("Player Body")]
 	private Rigidbody2D body;
@@ -57,7 +35,6 @@ public class PlayerController : MonoBehaviour {
         playerCam.transform.position=new Vector3 (transform.position.x, transform.position.y, playerCam.transform.position.z);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!isDead) {
@@ -73,13 +50,36 @@ public class PlayerController : MonoBehaviour {
     }
     #endregion
 
+    #region Skills
+    public void UseSkill(InputAction.CallbackContext context) {
+        if (context.started) {
+            skillOne.UseSkill();
+        }
+    }
+
+    #endregion
+
+
     #region Movement
+    [Header ("Movement Params")]
+	public float RunSpeed = 5f; // Maximum Horizontal Run Speeds
+    private Vector2 movementInput;
+
+    [Header ("Dodge System")]
+    public BarSlider staminaBar;
+    public int MaxStamina = 100;
+    public float StaminaRegenRate = 25;
+    public int DodgeStaminaCost = 50;
+    private float LastDodgeTime = 0;
+    public int CurrentStamina;
+    private float StaminaToRegen;
+
     public void Move(InputAction.CallbackContext context) {
         movementInput = context.ReadValue<Vector2>();
     }
 
     public void Dodge(InputAction.CallbackContext context) {
-        if (context.performed && CurrentStamina>=DodgeStaminaCost) {
+        if (context.started  && CurrentStamina>=DodgeStaminaCost) {
             LastDodgeTime=Time.time;
             CurrentStamina-=DodgeStaminaCost;
             StartCoroutine(RecoverFromDodge());
@@ -115,13 +115,24 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
     #region Health System
+    
+    [Header ("Health System")]
+    public BarSlider healthBar;
+    public int MaxHealth = 100;
+    public float HealthRegenRate = 10;
+    public float HealthRegenDelay = 5;
+    private float LastDamagedTime = -1;
+    private int CurrentHealth;
+    private float HealthToRegen;
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (!isDodging) Damage(20);
     }
 
     void Damage(int damage) {
-        if (!isDead){
+        if (!isDead && damage>0) {
+            HealthPopup.Create(transform.position, damage, DamageTypes.Damage);
             LastDamagedTime=Time.time;
             CurrentHealth -= damage;
             if (CurrentHealth<=0) {
@@ -133,7 +144,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Heal(int heal) {
-        if (!isDead){
+        if (!isDead && heal>0) {
             CurrentHealth += heal;
             if (CurrentHealth >= MaxHealth) {
                 CurrentHealth = MaxHealth;
@@ -151,6 +162,8 @@ public class PlayerController : MonoBehaviour {
         Heal( FlooredHealthToRegen );
      }
     #endregion
+
+
 
     #region Respawn System
     void Die() {
