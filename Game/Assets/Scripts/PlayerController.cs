@@ -24,5 +24,9 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(moveHorizontal,0);
         playerBody.AddForce(movement * speed);
+
+        float moveVertical = Input.GetAxis("Vertical");
+        Vector2 movementV = new Vector2(0, moveVertical);
+        playerBody.AddForce(movementV * speed);
     }
 }
