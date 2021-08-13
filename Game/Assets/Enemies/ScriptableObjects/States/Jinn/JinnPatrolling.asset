@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cab88a3b63dbe4bbae437f812fdd22, type: 3}
+  m_Name: JinnPatrolling
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 8bfcc9a5752f05c4ca6386c959688c25, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 7c33b49c8d901f245876c028760b3408, type: 2}
+    trueState: {fileID: 11400000, guid: 5b53ce6fbf30f3d46b584153aca2bd3a, type: 2}
+    falseState: {fileID: 11400000, guid: 78d45890ff6fdf8479973590e73a36c4, type: 2}
+  gizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

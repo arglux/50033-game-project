@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cab88a3b63dbe4bbae437f812fdd22, type: 3}
+  m_Name: RusherChasing
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 557ccdd7b29246744bb259276621810c, type: 2}
+  - {fileID: 11400000, guid: 550da21a9ef4f1640a510cacccfcd7af, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 56041a0dfbce5f340855041ec086bdb3, type: 2}
+    trueState: {fileID: 11400000, guid: 4241c7a16fe3f68419969cd4853d2651, type: 2}
+    falseState: {fileID: 11400000, guid: 031277ecde1383e4f9cb183358511d73, type: 2}
+  gizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

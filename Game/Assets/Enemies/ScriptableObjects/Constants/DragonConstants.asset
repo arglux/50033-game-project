@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0098e690fa292c6488ca4f94d6def959, type: 3}
+  m_Name: DragonConstants
+  m_EditorClassIdentifier: 
+  maxHealth: 300
+  maxShield: 300
+  maxArmour: 300
+  healthMultiplier: 1
+  fastSpeed: 4
+  normalSpeed: 3
+  slowSpeed: 0.1
+  attackPattern: {fileID: 11400000, guid: f6fda5d677b648c499ba6df30d0614e4, type: 2}
+  stoppingDistance: 7
+  cooldown: 1
+  attackRange: 8
+  attackRayCount: 15
+  attackConeAngle: 120
+  attackLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  viewDistance: 9
+  viewRayCount: 15
+  viewConeAngle: 120
+  viewLayerMask:
+    serializedVersion: 2
+    m_Bits: 8

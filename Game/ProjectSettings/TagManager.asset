@@ -4,19 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Wall
   - Enemy
+  - Projectile
+  - HealBeam
+  - NormalBeam
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Play Area
   - Water
   - UI
   - Player
   - PlayerProjectiles
   - Enemy
   - EnemyProjectiles
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -39,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Candles
+    uniqueID: 2316008273
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 3977459221
     locked: 0
