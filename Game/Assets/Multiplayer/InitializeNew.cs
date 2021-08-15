@@ -61,9 +61,9 @@ public class InitializeNew : MonoBehaviour
                 cameras[3].rect= new Rect(.5f, 0, .5f, .5f);
                 break;
             case 3:
-                cameras[0].rect = new Rect(0, .5f, 1.0f, .5f);
-                cameras[1].rect= new Rect(0, 0, .5f, .5f);
-                cameras[2].rect= new Rect(.5f, 0, .5f, .5f);
+                cameras[0].rect = new Rect(0, .5f, .5f, .5f);
+                cameras[1].rect= new Rect(.5f, .5f, .5f, .5f);
+                cameras[2].rect= new Rect(0, 0, 1f, .5f);
                 break;
             case 2:
                 cameras[0].rect = new Rect(0, 0, .5f, 1.0f);
