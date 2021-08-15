@@ -43,7 +43,10 @@ public class BulletController : MonoBehaviour
 
     void Despawn()
     {
-        this.transform.Find("sprite").gameObject.GetComponent<SpriteRenderer>().sprite = this.defaultSprite;
+        Transform sr = this.transform.Find("sprite");
+        if (sr!=null) {
+            sr.GetComponent<SpriteRenderer>().sprite = this.defaultSprite;
+        }
         this.gameObject.SetActive(false);
     }
 

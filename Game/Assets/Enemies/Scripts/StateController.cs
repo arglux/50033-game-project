@@ -15,6 +15,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public bool transitionStateChanged = false;
     public float aggro = 0;
     public float blinded = 0;
+    public float enraged = 0;
     public float taunted = 0;
     public float lastAttack = 0;
     public float timeSince = 0;
@@ -44,9 +45,9 @@ public class StateController : MonoBehaviour
         sprite = this.gameObject.transform.Find("Sprite").gameObject.GetComponent<SpriteRenderer>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.angularSpeed = 0; // prevent rotation while moving
+        navMeshAgent.stoppingDistance = constants.stoppingDistance;
         initialHandPos = hands.localPosition;
         animator = GetComponentInChildren<Animator>();
-        Debug.Log(animator);
         lastAttack=Time.time;
     }
 
@@ -67,15 +68,23 @@ public class StateController : MonoBehaviour
         aggro = Mathf.Max(0, aggro-Time.deltaTime);
         taunted = Mathf.Max(0, taunted-Time.deltaTime);
         blinded = Mathf.Max(0, blinded-Time.deltaTime);
+        enraged = Mathf.Max(0, enraged-Time.deltaTime);
+        if (enraged>0) {
+            navMeshAgent.speed = constants.normalSpeed * 1.33f; //33 % faster
+        } else {
+            navMeshAgent.speed = constants.normalSpeed;
+        }
     }
-    private void FlipSprite()
+    public void FlipSprite()
     {
-        if (navMeshAgent.velocity.x < -0.01) {
+        if (navMeshAgent.velocity.x < -0.05f) {
             sprite.flipX = true;
             hands.localPosition = new Vector3(-initialHandPos.x, initialHandPos.y, initialHandPos.z);
-        } else {
+        } else if (navMeshAgent.velocity.x > 0.05f) {
             sprite.flipX = false;
             hands.localPosition = initialHandPos;
+        } else {
+            return;
         }
     }
 
@@ -99,13 +108,18 @@ public class StateController : MonoBehaviour
         chaseTarget = target;
     }
 
-    public void InflictBlind() { // dps torchlight
+    public void InflictBlind() { 
         blinded = 0.5f;
+    }
+
+    public void InflictEnraged() { // dps torchlight
+        enraged = 0.5f;
     }
 
     public bool CheckIfCountDownElapsed(float duration)
     {
         timeSince = Time.time - lastAttack;
+        if (enraged>0) { duration *= 0.67f; } //50% faster
         if (Time.time - lastAttack >= duration)
         {
             lastAttack = Time.time;

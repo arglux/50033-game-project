@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeleeAttack
   m_EditorClassIdentifier: 
   attackRadius: 1.1
-  baseDamage: 6
+  baseDamage: 15
   animationDelay: 0
   playerLayer:
     serializedVersion: 2

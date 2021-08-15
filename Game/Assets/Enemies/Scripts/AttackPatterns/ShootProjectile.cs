@@ -6,10 +6,8 @@ using UnityEngine;
 public class ShootProjectile : AttackPattern
 {
     public ObjectType bulletType;
-    public float projectileForce = 80f;
-    public int numOfProjectile = 3;
+    // public float projectileForce = 80f;
     public float delay = 1f;
-    // private float time = 0f;
     
     public override void Fire(StateController controller)
     {
@@ -21,34 +19,16 @@ public class ShootProjectile : AttackPattern
     void FireProjectile(StateController controller)
     {
         // // Debug.Log("Firing Projectiles!");
-        for (int i=0; i<numOfProjectile; i++) 
+        GameObject item = ObjectPooler.SharedInstance.GetPooledObject(bulletType);
+        if (item != null)
         {
-            // while (time < delay) 
-            // {
-            //     time += Time.deltaTime;
-            //     Debug.Log(i);
-            //     Debug.Log(time);
-            // }
-
-            GameObject item = ObjectPooler.SharedInstance.GetPooledObject(bulletType);
-            if (item != null)
-            {
-                BulletController bullet = item.GetComponent<BulletController>();
-                bullet.position = controller.hands.position;
-                bullet.direction = GetProjectileDirection(controller);
-                // TODO configure damage and speed of bullet
-                // bullet.moveSpeed = 5.0f;
-                // bullet.baseDamage = 1.0f;
-                // bullet.pierceCount = 1;
-                bullet.bulletType = BulletType.fromEnemy;
-                controller.animator.SetTrigger("isAttacking");
-                item.SetActive(true);
-                // time = 0;
-            }
-            
-            // GameObject projectile = Instantiate(projectilePrefab, controller.hands.position, Quaternion.identity);
-            // Rigidbody2D projectileBody = projectile.GetComponent<Rigidbody2D>();
-            // projectileBody.AddForce(GetProjectileDirection(controller) * projectileForce, ForceMode2D.Impulse);
+            BulletController bullet = item.GetComponent<BulletController>();
+            bullet.position = controller.hands.position;
+            bullet.direction = GetProjectileDirection(controller);
+            bullet.bulletType = BulletType.fromEnemy;
+            controller.animator.SetTrigger("isAttacking");
+            item.SetActive(true);
+            // time = 0;
         }
     }
 

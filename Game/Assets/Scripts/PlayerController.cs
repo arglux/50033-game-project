@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public bool isDead = false;
     public bool isDodging = false;
     public bool isMoving = false;
+    public bool isHurting = false;
 
     [Header ("References")]
     public Camera playerCam;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterClass characterClass;
     
     [Header ("Player Body")]
+    public SpriteRenderer sprite;
 	private Rigidbody2D body;
     private CapsuleCollider2D bcollider;
     private Animator animator;
@@ -28,7 +30,6 @@ public class PlayerController : MonoBehaviour {
 
     [Header ("Dodge System")]
     public BarSlider staminaBar;
-    public AudioClip dodgeSFX;
     public int MaxStamina = 100;
     private float StaminaRegenRate = 8f;
     private int DodgeStaminaCost = 50;
@@ -79,11 +80,19 @@ public class PlayerController : MonoBehaviour {
     private float BatteryToUse;
     private Coroutine torchCoroutine;
 
+    [Header ("Feedback System")]
+    public AudioClip[] deathSFX;
+    public AudioClip[] hurtSFX;
+    public AudioClip dodgeSFX;
+    public Material hitMaterial;
+    private Material normalMaterial;
+
 
     void Awake() {
         body=GetComponent<Rigidbody2D>();
         bcollider=GetComponent<CapsuleCollider2D>();
         animator=GetComponent<Animator>();
+        normalMaterial = sprite.material;
     }
 
     public void SetupClass(CharacterClass cc) 
@@ -94,7 +103,7 @@ public class PlayerController : MonoBehaviour {
                 skillIcon.sprite = tankSKL;
                 skillOverlay.sprite = tankSKL;
                 passiveIcon.sprite = tankPSV;
-                setTorchlight(3f, 50f, torch50);
+                setTorchlight(3f, 60f, torch60);
                 break;
             case ClassType.DPS:
                 skillIcon.sprite = dpsSKL;
@@ -106,7 +115,7 @@ public class PlayerController : MonoBehaviour {
                 skillIcon.sprite = supportSKL;
                 skillOverlay.sprite = supportSKL;
                 passiveIcon.sprite = supportPSV;
-                setTorchlight(10f, 60f, torch60);
+                setTorchlight(10f, 50f, torch50);
                 break;
         }
         UpdateClass();
@@ -137,14 +146,14 @@ public class PlayerController : MonoBehaviour {
                 float healthMult = 1f + characterClass.passivePoints * characterClass.healthBonusPercent;
                 int OldMaxHealth = MaxHealth;
                 MaxHealth = (int) (100 * healthMult);
-                Heal(MaxHealth - OldMaxHealth);
                 healthBar.SetMaxValue(MaxHealth);
+                Heal(MaxHealth - OldMaxHealth);
                 HealthRegenRate = MaxHealth / 20f;
                 break;
             case ClassType.DPS:
                 float agiMult = 1f + characterClass.passivePoints * characterClass.agilityBonusPercent;
                 RunSpeed = 5f * agiMult;
-                StaminaRegenRate = 8f * agiMult;
+                StaminaRegenRate = 8f * agiMult * 1.5f;
                 break;
             case ClassType.Support:
                 float visMult = 1f + characterClass.passivePoints * characterClass.visionMultiplier;
@@ -168,7 +177,12 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate()
     {
         if (!isDead) {
-            body.velocity= new Vector2(movementInput.x * RunSpeed, movementInput.y * RunSpeed);
+            if (!isHurting || isDodging) {
+                body.velocity= new Vector2(movementInput.x * RunSpeed, movementInput.y * RunSpeed);
+            } else {
+                body.velocity= Vector2.zero;
+            }
+            
             if ( LastDamagedTime >= 0 && Time.time - LastDamagedTime >= HealthRegenDelay ) {
                 RegenerateHealth(HealthRegenRate);
             }
@@ -235,17 +249,34 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Damage(float inDmg) {
-        if (!isDead && !isDodging) {
+        if (!isDead && !isDodging && !isHurting) {
             int damage = Mathf.RoundToInt(inDmg * (1f - damageMitigation));
-            HealthPopup.Create(transform.position, damage, DamageTypes.DPlayer);
-            LastDamagedTime=Time.time;
-            CurrentHealth -= damage;
-            if (CurrentHealth<=0) {
-                CurrentHealth=0;
-                Die();
+            if (damage >0) {
+                HealthPopup.Create(transform.position, damage, DamageTypes.DPlayer);
+                CurrentHealth -= damage;
+                if (CurrentHealth<=0) {
+                    CurrentHealth=0;
+                    Die();
+                } else {
+                    if (!isHurting) {
+                        StartCoroutine(HurtFlash());
+                    }
+                }
+                LastDamagedTime=Time.time;
+                 healthBar.SetValue(CurrentHealth);
             }
-            healthBar.SetValue(CurrentHealth);
         }
+    }
+
+    public IEnumerator HurtFlash ()
+    {
+        isHurting=true;
+        sprite.material = hitMaterial;
+        AudioManager.instance.Play(hurtSFX[Random.Range(0, hurtSFX.Length)]);
+        yield return new WaitForSeconds(0.2f);
+        sprite.material = normalMaterial;
+        yield return new WaitForSeconds(0.1f);
+        isHurting=false;
     }
 
     public void Heal(int heal) {
@@ -393,6 +424,7 @@ public class PlayerController : MonoBehaviour {
     public void Die() {
         isDead=true;
         PlayerConfigurationManager.Instance.CountPlayerDeath();
+        AudioManager.instance.Play(deathSFX[Random.Range(0, deathSFX.Length)]);
         deathPanel.SetActive(true);
         StartCoroutine(StartRespawn());
         //deactivate body components

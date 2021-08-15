@@ -154,16 +154,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35d6291c73f1b24ebff951c5702d8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constants: {fileID: 11400000, guid: f6b1b55b30b78dc4da5457c8b3d93f21, type: 2}
+  constants: {fileID: 11400000, guid: 5956b0754b4b1394fa54bbc3517f5943, type: 2}
   isEntrance: 0
   difficultyMultiplier: 1.35
   barPrefab: {fileID: 7033743164995089400, guid: fc788e5b4a883334bb613a4078b2dce1, type: 3}
-  healthBars: 010000000200000000000000
+  healthBars: 0000000001000000
   onEntranceDeath:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
-  healthDisplayHeight: 0.2
+  healthDisplayHeight: 0.6
 --- !u!70 &2160881453464110272
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -368,6 +368,7 @@ MonoBehaviour:
   transitionStateChanged: 0
   aggro: 0
   blinded: 0
+  enraged: 0
   taunted: 0
   lastAttack: 0
   timeSince: 0

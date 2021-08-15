@@ -72,7 +72,7 @@ public class TorchLightController : MonoBehaviour {
                         if (playerController.skillActive && characterClass.classType==ClassType.Tank) {
                             sc.InflictTaunted(gameObject.transform.parent.transform);
                         } else if (playerController.skillActive && characterClass.classType==ClassType.DPS) {
-                            sc.InflictBlind();
+                            sc.InflictEnraged();
                         }
                     } else if (target.tag=="Player" && playerController.skillActive && characterClass.classType==ClassType.Support) {
                         target.GetComponent<PlayerController>().Heal(FlooredHealthToRegen);

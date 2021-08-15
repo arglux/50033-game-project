@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   maxShield: 0
-  maxArmour: 200
+  maxArmour: 300
   healthMultiplier: 1
   fastSpeed: 7
   normalSpeed: 5
   slowSpeed: 0.001
   attackPattern: {fileID: 11400000, guid: 5ad6a0a6f88b8ec46ba6acc7bb9f6af6, type: 2}
-  stoppingDistance: 1.8
-  cooldown: 1
+  stoppingDistance: 1.7
+  cooldown: 0.9
   attackRange: 4
-  attackRayCount: 9
-  attackConeAngle: 120
+  attackRayCount: 12
+  attackConeAngle: 150
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 8
   viewDistance: 6
-  viewRayCount: 9
-  viewConeAngle: 120
+  viewRayCount: 12
+  viewConeAngle: 150
   viewLayerMask:
     serializedVersion: 2
     m_Bits: 8

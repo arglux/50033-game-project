@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2416529860050604540, guid: dc6e6b4c8bfb8784092f816829281f70, type: 3}
       propertyPath: m_MaxPlayerCount
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2416529860050604540, guid: dc6e6b4c8bfb8784092f816829281f70, type: 3}
       propertyPath: m_JoinAction.m_Action.m_Id

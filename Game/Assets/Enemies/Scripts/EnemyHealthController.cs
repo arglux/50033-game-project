@@ -158,8 +158,8 @@ public class EnemyHealthController : MonoBehaviour
         if (!isEntrance)
         {
             takeDamageAnimator.SetTrigger("isHit");
-            Vector3 knockback = bullet.direction * effectiveDamage / 75;
-            transform.parent.parent.Translate(knockback);
+            Vector3 knockback = bullet.direction * effectiveDamage / 100;
+            transform.parent.parent.Translate(new Vector3(Mathf.Min(1f,knockback.x), 0 , Mathf.Min(1f,knockback.y)));
         }
         HealthPopup.Create(transform.position, effectiveDamage, bullet.damageType);
         

@@ -21,7 +21,7 @@ MonoBehaviour:
   slowSpeed: 0.01
   attackPattern: {fileID: 11400000, guid: 3bdab27823b021e4c882a1255607d575, type: 2}
   stoppingDistance: 5
-  cooldown: 0.8
+  cooldown: 1
   attackRange: 6
   attackRayCount: 9
   attackConeAngle: 120

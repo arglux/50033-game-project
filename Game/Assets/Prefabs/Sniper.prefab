@@ -234,12 +234,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rpm: 24
   bulletSpeed: 40
-  baseDamage: 120
+  baseDamage: 250
   bulletSpread: 0
-  reloadTime: 3
-  pierceCount: 15
-  magazineCapacity: 10
-  spawnDistance: 1
+  reloadTime: 2
+  pierceCount: 10
+  magazineCapacity: 12
+  spawnDistance: 0.7
+  bulletSprite: {fileID: 21300000, guid: 6b88a506fbf29704a879df7124affdd5, type: 3}
   healthMultiplier: 1
   armourMultiplier: 1
   shieldMultiplier: 1

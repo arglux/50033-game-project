@@ -54,7 +54,12 @@ public class InitializeNew : MonoBehaviour
             cameras.Add(ph.playerCam);
         }
         switch(cameras.Count) {
-            // TODO 4 cameras
+            case 4:
+                cameras[0].rect = new Rect(0, .5f, .5f, .5f);
+                cameras[1].rect= new Rect(.5f, .5f, .5f, .5f);
+                cameras[2].rect= new Rect(0, 0, .5f, .5f);
+                cameras[3].rect= new Rect(.5f, 0, .5f, .5f);
+                break;
             case 3:
                 cameras[0].rect = new Rect(0, .5f, 1.0f, .5f);
                 cameras[1].rect= new Rect(0, 0, .5f, .5f);
@@ -68,7 +73,7 @@ public class InitializeNew : MonoBehaviour
                 cameras[0].rect= new Rect(0f, 0f, 1.0f, 1.0f);
                 break;
             default:
-                // Debug.Log("Camera initialization failed");
+                Debug.Log("Too many players for splitscreen!");
                 break;
         }
         AudioManager.instance.StopBGM();

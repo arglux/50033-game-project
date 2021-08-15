@@ -16365,7 +16365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: maxSpawn
-      value: 16
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: spawnType
@@ -16385,7 +16385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: enemiesToPool.Array.data[0].amount
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: enemiesToPool.Array.data[0].prefab
@@ -17949,7 +17949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: maxSpawn
-      value: 15
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: spawnType
@@ -17969,7 +17969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: enemiesToPool.Array.data[0].amount
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6966244050384143167, guid: db03c6a12bc79d247bdc09e196c211e8, type: 3}
       propertyPath: enemiesToPool.Array.data[0].prefab

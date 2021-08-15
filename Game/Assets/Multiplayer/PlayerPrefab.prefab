@@ -35,7 +35,8 @@ Transform:
 --- !u!198 &92476024060071195
 ParticleSystem:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6523723824402189410, guid: 90fecf0e4de04884caea4eded421dcdc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6523723824402189410, guid: 90fecf0e4de04884caea4eded421dcdc,
+    type: 3}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92476024060071193}
@@ -4905,7 +4906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8735046926385614820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6094,9 +6095,9 @@ RectTransform:
   m_Father: {fileID: 5822949157705697303}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -235.4, y: -67.8}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -235.4, y: 232.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1777232072007005210
@@ -6412,7 +6413,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7752275732147653104, guid: 93697bfe070cb5e44b9074182bfbb0f7, type: 3}
+  m_Sprite: {fileID: 7752275732147653104, guid: 93697bfe070cb5e44b9074182bfbb0f7,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6494,7 +6496,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6898339031043958275, guid: 4f5dfd220582c8549879f9415c379843, type: 3}
+  m_Sprite: {fileID: 6898339031043958275, guid: 4f5dfd220582c8549879f9415c379843,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6736,9 +6739,9 @@ MonoBehaviour:
   playerCam: {fileID: 3001765917100367871}
   deathPanel: {fileID: 493426314177077962}
   respawnText: {fileID: 209990235341802272}
+  sprite: {fileID: 1324826106709240009}
   RunSpeed: 5
   staminaBar: {fileID: 3086856271414804138}
-  dodgeSFX: {fileID: 8300000, guid: d9d40357c2ab7b14ebb119d3ad2d3b25, type: 3}
   MaxStamina: 100
   healthBar: {fileID: 4389788597536481284}
   MaxHealth: 100
@@ -6763,6 +6766,15 @@ MonoBehaviour:
   torch50: {fileID: 323177511698200337}
   torch22: {fileID: 1224842726362031691}
   vision: {fileID: 4678557122673079906}
+  deathSFX:
+  - {fileID: 8300000, guid: 88504ad1c4ce14d4cb38ab6293e937c4, type: 3}
+  - {fileID: 8300000, guid: eecdefa17eeb7bb438edb473431ccfc9, type: 3}
+  hurtSFX:
+  - {fileID: 8300000, guid: d73ffb3d965b34b49928f1f785b2925b, type: 3}
+  - {fileID: 8300000, guid: e1445172ccb49eb41a2dd6b19d0075c4, type: 3}
+  - {fileID: 8300000, guid: 21f80793ceba4f6468277d76129ce507, type: 3}
+  dodgeSFX: {fileID: 8300000, guid: d9d40357c2ab7b14ebb119d3ad2d3b25, type: 3}
+  hitMaterial: {fileID: 2100000, guid: c148599b37da45c47961220152f40d29, type: 2}
 --- !u!95 &7262826396306810704
 Animator:
   serializedVersion: 3
@@ -7407,7 +7419,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1127082699607533855, guid: 93697bfe070cb5e44b9074182bfbb0f7, type: 3}
+  m_Sprite: {fileID: -1127082699607533855, guid: 93697bfe070cb5e44b9074182bfbb0f7,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

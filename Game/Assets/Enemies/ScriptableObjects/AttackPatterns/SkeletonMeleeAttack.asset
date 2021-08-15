@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b63d2fc71c4dc40864b8bd25954a7b, type: 3}
   m_Name: SkeletonMeleeAttack
   m_EditorClassIdentifier: 
-  attackRadius: 0.8
-  baseDamage: 5
+  attackRadius: 0.9
+  baseDamage: 8
   animationDelay: 0
   playerLayer:
     serializedVersion: 2

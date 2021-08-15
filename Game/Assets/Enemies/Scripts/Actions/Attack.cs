@@ -39,7 +39,6 @@ public class Attack : Action
                     //     controller.constants.attackPattern.Fire(controller);
                     //     time = 0;
                     // }
-
                     if (controller.CheckIfCountDownElapsed(controller.constants.cooldown))
                     {
                         controller.constants.attackPattern.Fire(controller);

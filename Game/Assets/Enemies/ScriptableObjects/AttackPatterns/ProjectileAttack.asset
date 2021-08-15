@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ProjectileAttack
   m_EditorClassIdentifier: 
   bulletType: 3
-  projectileForce: 3
+  projectileForce: 10
   numOfProjectile: 1
   delay: 5

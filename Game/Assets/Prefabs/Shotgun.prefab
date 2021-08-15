@@ -133,12 +133,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rpm: 53
   bulletSpeed: 20
-  baseDamage: 50
+  baseDamage: 15
   bulletSpread: 3
   reloadTime: 4
   pierceCount: 2
   magazineCapacity: 7
   spawnDistance: 0.65
+  bulletSprite: {fileID: 0}
   healthMultiplier: 1
   armourMultiplier: 1
   shieldMultiplier: 1
@@ -148,8 +149,8 @@ MonoBehaviour:
   casingSource: {fileID: 4216251117108890686}
   emptySource: {fileID: 2532247624323084426}
   ammoText: {fileID: 0}
-  spreadAngle: 15
-  numShots: 8
+  spreadAngle: 12
+  numShots: 6
 --- !u!82 &6264358337700052831
 AudioSource:
   m_ObjectHideFlags: 0

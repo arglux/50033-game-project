@@ -53,6 +53,7 @@ MonoBehaviour:
   transitionStateChanged: 0
   aggro: 0
   blinded: 0
+  enraged: 0
   taunted: 0
   lastAttack: 0
   timeSince: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35d6291c73f1b24ebff951c5702d8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constants: {fileID: 11400000, guid: 922098c43981abb4387778fe5b9e0be4, type: 2}
+  constants: {fileID: 11400000, guid: c797064878d725f44812b2adcb6f88bd, type: 2}
   isEntrance: 0
   difficultyMultiplier: 1.35
   barPrefab: {fileID: 7033743164995089400, guid: fc788e5b4a883334bb613a4078b2dce1, type: 3}
@@ -304,4 +305,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isDead: 0
-  healthDisplayHeight: 0.3
+  healthDisplayHeight: 0.4

@@ -154,13 +154,13 @@ public class CharacterClass
     public GameObject weapon2 { get; set; }
 
     // Tank Skill
-    public float reductionMultiplier = 0.05f;
+    public float reductionMultiplier = 0.1f;
 
     // Tank Passives
     public float healthBonusPercent = 0.2f;
 
     // DPS Skill
-    public float damageMultiplier = 0.5f;
+    public float damageMultiplier = 0.1f;
 
     // DPS Passives
     public float agilityBonusPercent = 0.1f;

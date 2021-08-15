@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: SkeletonConstants
   m_EditorClassIdentifier: 
   maxHealth: 200
-  maxShield: 1
-  maxArmour: 200
+  maxShield: 200
+  maxArmour: 0
   healthMultiplier: 1
   fastSpeed: 11
-  normalSpeed: 5
+  normalSpeed: 6
   slowSpeed: 0.0001
   attackPattern: {fileID: 11400000, guid: 3cb7b181f9c3c48449976fb4e6b9982b, type: 2}
-  stoppingDistance: 1.4
-  cooldown: 1
-  attackRange: 7
-  attackRayCount: 9
-  attackConeAngle: 120
+  stoppingDistance: 1.5
+  cooldown: 0.8
+  attackRange: 8
+  attackRayCount: 12
+  attackConeAngle: 150
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 8
   viewDistance: 7
-  viewRayCount: 9
-  viewConeAngle: 120
+  viewRayCount: 12
+  viewConeAngle: 150
   viewLayerMask:
     serializedVersion: 2
     m_Bits: 8
